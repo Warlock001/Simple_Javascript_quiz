@@ -2,40 +2,15 @@
 <html>
 	<head>
 		<title>General Quiz</title>
-		<style>
-			* {
-			    box-sizing: border-box;
-			    font-family: sans-serif;
-			}
-			input[type=text], input[type=email], select, textarea {
-			    width: 100%;
-			    padding: 12px;
-			    border: 1px solid #ccc;
-			    border-radius: 4px;
-			    resize: vertical;
-			}
-			button {
-			    background-color: #EBA952;
-			    color: white;
-			    padding: 12px 20px;
-			    border: none;
-			    border-radius: 4px;
-			    cursor: pointer;
-			    float: right;
-			}
-			.container {
-			    border-radius: 5px;
-			    background-color: #AACED1;
-			    padding: 20px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="quizreal.css">
+		<script type="text/javascript" src="quizreal.js"></script>
 	</head>
 	<body>
 		<center>
 			<h1>Welcome to General Quiz</h1>
 			<div class="container">
 				<p> Enter your details to continue: </p>
-				<form name="sashForm_1" onsubmit="return name_credentials()">
+				<form name="playerinfo" onsubmit="return name_credentials()">
 					<table>
 						<tr>
 							<td>Name:</td>
@@ -53,7 +28,7 @@
 			</div>
 			<br>
 			<div class="container" align="left">
-				<form name="sashForm_2">
+				<form name="playerdisplay">
 					<h2>Players Details are:</h2>
 					<table>
 						<tr>
@@ -69,15 +44,15 @@
 			</div>
 			<br>
 			<div class="container">
-				<form name="sashForm_3" onsubmit="return score()">
+				<form name="quizform" onsubmit="return score()">
 					<table>
 						<tr>
-							<td>1. Which Penguin is the mascot of Linux Operating system?</td>
+							<td>1. Who was the first prime minister of India?</td>
 						</tr>
 						<tr>	
 							<td>
-								<input type="radio" name="q1" value="MUX" > MUX
-								<input type="radio" name="q1" value="TUX"> TUX 
+								<input type="radio" name="q1" value="Jawaharlal Nehru" > Jawaharlal Nehru
+								<input type="radio" name="q1" value="Mahatma Gandi"> Mahatma Gandi
 							</td>
 						</tr>
 						<tr>
@@ -90,12 +65,12 @@
 							</td>
 						</tr>
 						<tr>
-							<td>3. Which IT company got name from Sanfrancisco?</td>
+							<td>3. Dandi March was started in?</td>
 						</tr>
 						<tr>	
 							<td>
-								<input type="radio" name="q3" value="CISCO" > CISCO
-								<input type="radio" name="q3" value="UST Globals"> UST Globals
+								<input type="radio" name="q3" value="Gujarat" > Gujarat
+								<input type="radio" name="q3" value="West Bengal"> West Bengal
 							</td>
 						</tr>
 						<tr>
@@ -135,12 +110,12 @@
 							</td>
 						</tr>
 						<tr>
-							<td>8. Whose motto is "wisdom of mass principle"?</td>
+							<td>8. In internet terminology IP means?</td>
 						</tr>
 						<tr>	
 							<td>
-								<input type="radio" name="q8" value="Wikipedia" > Wikipedia
-								<input type="radio" name="q8" value="Google"> Google
+								<input type="radio" name="q8" value="Internet Protocol" >Internet Protocol
+								<input type="radio" name="q8" value="Network Protocol"> Network Protocol
 							</td>
 						</tr>
 						<tr>
@@ -178,44 +153,4 @@
 			</dir>
 		</center>
 	</body>
-	<script type="text/javascript">
-		function name_credentials() {
-			document.getElementById('sel_name').innerHTML =document.forms["sashForm_1"]["con_name"].value;
-			document.getElementById('sel_email').innerHTML=document.forms["sashForm_1"]["con_email"].value;
-			return false;
-		}
-		function score() {
-			var namee = document.getElementById('sel_name');
-			var emaill = document.getElementById('sel_email');
-			var sc = 0;
-			var answers = ["TUX", "Apple", "CISCO", "Nokia", "International Mobile Equipment Identity", "American Standard Code for Information Interchange", "Network Interface Card", "Wikipedia", "Andhra Pradesh", "1st graphical game"];
-			var i;
-			var questions = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ",];
-			var k = 0;
-			var wrong_answers = " ";
-			questions[0] = document.forms["sashForm_3"]["q1"].value;
-			questions[1] = document.forms["sashForm_3"]["q2"].value;
-			questions[2] = document.forms["sashForm_3"]["q3"].value;
-			questions[3] = document.forms["sashForm_3"]["q4"].value;
-			questions[4] = document.forms["sashForm_3"]["q5"].value;
-			questions[5] = document.forms["sashForm_3"]["q6"].value;
-			questions[6] = document.forms["sashForm_3"]["q7"].value;
-			questions[7] = document.forms["sashForm_3"]["q8"].value;
-			questions[8] = document.forms["sashForm_3"]["q9"].value;
-			questions[9] = document.forms["sashForm_3"]["q10"].value;
-			for(i = 0; i < answers.length; i++) {
-				if(questions[i] == answers[i]) {
-					sc = sc + 10;
-				}
-				else if(questions[i] != answers[i]) {
-					wrong_answers = wrong_answers + (i+1) + ". "+ answers[i] + " ";
-				}
-			}
-			var no_of_correct_ans = sc/10;
-			var no_of_wrong_ans = 10 - no_of_correct_ans;
-			document.getElementById("result_div").innerHTML = "name: "+namee+"<br>"+"Email: "+emaill+"<br>"+"Number of correct answers:"+no_of_correct_ans+"<br>"+"Number of wrong answers: "+no_of_wrong_ans+"<br>"+"Score: "+sc;
-			document.getElementById("correct_ans").innerHTML = "<h2> Answers </h2> <br>" +wrong_answers;
-			return false;
-		}
-	</script>
 </html>
